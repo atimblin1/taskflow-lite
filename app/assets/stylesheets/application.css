@@ -81,6 +81,46 @@ body {
   text-decoration: underline;
 }
 
+/* Priority Filter */
+.priority-filter {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--bg-gray);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.filter-link {
+  padding: 6px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.filter-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.filter-link.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -204,25 +244,57 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-.task-card.completed {
+.task-card.task--completed {
   background: var(--bg-gray);
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 .task-content {
   margin-bottom: 16px;
 }
 
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .task-title {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 8px;
   color: var(--text-primary);
+  margin: 0;
 }
 
-.task-card.completed .task-title {
+.task-card.task--completed .task-title {
   text-decoration: line-through;
   color: var(--text-secondary);
+}
+
+/* Priority Badges */
+.priority-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.priority-badge.priority-low {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.priority-badge.priority-normal {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.priority-badge.priority-high {
+  background: #fef3c7;
+  color: #92400e;
 }
 
 .task-description {
@@ -333,5 +405,10 @@ body {
 
   .task-actions .btn {
     width: 100%;
+  }
+
+  .priority-filter {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

@@ -22,6 +22,14 @@
         placeholder: "Add more details about this task..." %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :priority, "Priority" %>
+    <%= form.select :priority, 
+        Task.priorities.keys.map { |p| [p.titleize, p] },
+        {},
+        class: "form-control" %>
+  </div>
+
   <div class="form-actions">
     <%= form.submit class: "btn btn-primary" %>
     <%= link_to "Cancel", tasks_path, class: "btn btn-secondary" %>

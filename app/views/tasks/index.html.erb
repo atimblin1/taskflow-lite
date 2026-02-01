@@ -1,7 +1,7 @@
 <div class="container">
   <header class="header">
     <h1>TaskFlow Lite</h1>
-    <p class="subtitle">Simple task management</p>
+    <p class="subtitle">A lightweight Rails task manager</p>
   </header>
 
   <%= link_to "New Task", new_task_path, class: "btn btn-primary" %>
@@ -13,6 +13,14 @@
     <div class="alert"><%= alert %></div>
   <% end %>
 
+  <div class="priority-filter">
+    <span class="filter-label">Filter by priority:</span>
+    <%= link_to "All", tasks_path, class: "filter-link #{'active' if @current_priority.blank?}" %>
+    <%= link_to "Low", tasks_path(priority: 'low'), class: "filter-link #{'active' if @current_priority == 'low'}" %>
+    <%= link_to "Normal", tasks_path(priority: 'normal'), class: "filter-link #{'active' if @current_priority == 'normal'}" %>
+    <%= link_to "High", tasks_path(priority: 'high'), class: "filter-link #{'active' if @current_priority == 'high'}" %>
+  </div>
+
   <section class="tasks-section">
     <h2>Open Tasks (<%= @open_tasks.count %>)</h2>
     
@@ -21,7 +29,10 @@
         <% @open_tasks.each do |task| %>
           <div class="task-card">
             <div class="task-content">
-              <h3 class="task-title"><%= task.title %></h3>
+              <div class="task-header">
+                <h3 class="task-title"><%= task.title %></h3>
+                <span class="priority-badge priority-<%= task.priority %>"><%= task.priority.titleize %></span>
+              </div>
               <% if task.description.present? %>
                 <p class="task-description"><%= simple_format(task.description) %></p>
               <% end %>
@@ -47,9 +58,12 @@
     <% if @completed_tasks.any? %>
       <div class="task-list">
         <% @completed_tasks.each do |task| %>
-          <div class="task-card completed">
+          <div class="task-card task--completed">
             <div class="task-content">
-              <h3 class="task-title"><%= task.title %></h3>
+              <div class="task-header">
+                <h3 class="task-title"><%= task.title %></h3>
+                <span class="priority-badge priority-<%= task.priority %>"><%= task.priority.titleize %></span>
+              </div>
               <% if task.description.present? %>
                 <p class="task-description"><%= simple_format(task.description) %></p>
               <% end %>

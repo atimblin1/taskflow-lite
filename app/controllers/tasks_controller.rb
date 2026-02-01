@@ -2,8 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy, :complete, :reopen]
   
   def index
-    @open_tasks = Task.open.recent
-    @completed_tasks = Task.completed.recent
+    @open_tasks = Task.open.by_priority(params[:priority]).recent
+    @completed_tasks = Task.completed.by_priority(params[:priority]).recent
+    @current_priority = params[:priority]
   end
   
   def new
@@ -59,6 +60,6 @@ class TasksController < ApplicationController
   end
   
   def task_params
-    params.require(:task).permit(:title, :description, :status)
+    params.require(:task).permit(:title, :description, :status, :priority)
   end
 end
