@@ -14,7 +14,8 @@ I built it as a deliberately scoped project to focus on fundamentals: clean CRUD
 - Ruby on Rails  
 - PostgreSQL  
 - Server-rendered HTML  
-- Minimal JavaScript  
+- Minimal JavaScript 
+- Tailwind CSS 
 
 ## Design approach
 This app is intentionally simple.
