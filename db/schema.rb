@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_01_025515) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_01_033603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -18,10 +18,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_01_025515) do
     t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.text "description"
+    t.integer "priority", default: 1, null: false
     t.string "status", default: "open", null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_tasks_on_created_at"
+    t.index ["priority"], name: "index_tasks_on_priority"
     t.index ["status"], name: "index_tasks_on_status"
   end
 end

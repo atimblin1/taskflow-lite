@@ -1,47 +1,36 @@
 # TaskFlow Lite
 
-![TaskFlow Lite](docs/screenshot.png)
+TaskFlow Lite is a small task management app built with Ruby on Rails.
 
-TaskFlow Lite is a lightweight task management application built with Ruby on Rails.
-It focuses on clean fundamentals, predictable behavior, and minimal UI.
+I built it as a deliberately scoped project to focus on fundamentals: clean CRUD behavior, readable code, and a UI that stays out of the way. It’s meant to feel like a tool you’d actually keep open in a browser tab, not a demo packed with features.
 
-## Features
-- Create, edit, complete, reopen, and delete tasks
-- Priority levels (low, normal, high) with filtering
-- Separate views for open and completed tasks
-- Flash feedback for all actions
-- Simple, readable UI
-- Sample seed data for first-time users
+## What it does
+- Create, edit, complete, reopen, and delete tasks  
+- Keep open and completed tasks clearly separated  
+- Show immediate feedback when actions succeed or fail  
+- Seed a few example tasks so the app isn’t empty on first run  
 
-## Tech Stack
-- Ruby on Rails 8.1
-- PostgreSQL
-- Server-rendered HTML
-- Minimal JavaScript (Turbo for enhanced navigation)
+## Tech stack
+- Ruby on Rails  
+- PostgreSQL  
+- Server-rendered HTML  
+- Minimal JavaScript  
 
-## Design Goals
-- Demonstrate clean MVC structure
-- Avoid overengineering
-- Prioritize clarity and maintainability
-- Ship a complete, understandable application
+## Design approach
+This app is intentionally simple.
 
-## Non-Goals
-- Authentication
-- Collaboration
-- Real-time updates
-- Complex permissions
+There’s no authentication, no collaboration, and no real-time behavior. Those were conscious choices to keep the code easy to follow and to avoid solving problems that aren’t necessary at this scale.
 
-## Getting Started
+The goal here is correctness and clarity, not cleverness.
+
+## What this project is not
+- A full productivity system  
+- A real-time or multi-user app  
+- A showcase of advanced Rails patterns  
+
+## Running it locally
 ```bash
 bundle install
 rails db:setup
 rails server
-```
-
-Visit http://localhost:3000
-
-## Future Improvements
-- Search
-- Pagination
-- Due dates
-- Tags or categories
+Then visit http://localhost:3000.
