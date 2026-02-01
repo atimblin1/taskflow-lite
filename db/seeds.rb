@@ -4,33 +4,43 @@ if Rails.env.development?
   puts "Cleared existing tasks"
 end
 
-# Create sample tasks
+# Create sample tasks with varying priorities
 tasks_data = [
   {
     title: "Welcome to TaskFlow Lite!",
-    description: "This is a sample task. Click 'Edit' to modify it or 'Complete' to mark it done. You can also create new tasks using the 'New Task' button above.",
-    status: "open"
+    description: "This is a sample task. Try editing it, completing it, or creating new tasks. You can also filter by priority.",
+    status: "open",
+    priority: "normal"
   },
   {
-    title: "Try editing a task",
-    description: "Click the Edit button on any task to modify its title or description.",
-    status: "open"
+    title: "High priority item",
+    description: "This task has high priority. Notice the yellow badge.",
+    status: "open",
+    priority: "high"
   },
   {
-    title: "Mark tasks as complete",
-    description: "When you finish a task, click the Complete button. It will move to the Completed Tasks section.",
-    status: "open"
+    title: "Regular task",
+    description: "This is a normal priority task.",
+    status: "open",
+    priority: "normal"
   },
   {
-    title: "Sample completed task",
-    description: "This task has been marked as complete. You can reopen it if needed!",
-    status: "completed"
+    title: "Low priority task",
+    description: "This can wait. Low priority tasks have a gray badge.",
+    status: "open",
+    priority: "low"
+  },
+  {
+    title: "Completed high priority task",
+    description: "This was important and now it's done!",
+    status: "completed",
+    priority: "high"
   }
 ]
 
 tasks_data.each do |task_attrs|
   task = Task.create!(task_attrs)
-  puts "Created task: #{task.title}"
+  puts "Created task: #{task.title} (#{task.priority})"
 end
 
 puts "\nSeeded #{Task.count} tasks successfully!"
