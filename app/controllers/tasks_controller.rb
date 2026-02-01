@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy, :complete, :reopen]
   
   def index
-    @open_tasks = Task.open.by_priority(params[:priority]).recent
-    @completed_tasks = Task.completed.by_priority(params[:priority]).recent
+    @open_tasks = Task.active.open.by_priority(params[:priority]).recent
+    @completed_tasks = Task.active.completed.by_priority(params[:priority]).recent
     @current_priority = params[:priority]
   end
   

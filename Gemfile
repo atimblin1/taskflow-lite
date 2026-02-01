@@ -55,3 +55,6 @@ group :development do
 end
 
 gem "tailwindcss-rails", "~> 4.4"
+
+# Profanity filter
+gem "obscenity", "~> 1.0"
