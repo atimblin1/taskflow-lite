@@ -112,28 +112,39 @@ body {
 .btn-success {
   background: var(--success);
   color: white;
+  font-weight: 600;
 }
 
 .btn-success:hover {
   background: var(--success-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
 }
 
 .btn-danger {
-  background: var(--danger);
-  color: white;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--border);
+  font-weight: 400;
 }
 
 .btn-danger:hover {
-  background: var(--danger-dark);
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
 }
 
 .btn-secondary {
-  background: var(--secondary);
-  color: white;
+  background: white;
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  font-weight: 500;
 }
 
 .btn-secondary:hover {
-  background: var(--secondary-dark);
+  background: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
 }
 
 .btn-sm {
