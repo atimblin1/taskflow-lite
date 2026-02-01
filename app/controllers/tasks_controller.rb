@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy, :complete, :reopen]
   
   def index
-    @open_tasks = Task.active.open.by_priority(params[:priority]).recent
-    @completed_tasks = Task.active.completed.by_priority(params[:priority]).recent
+    @open_tasks = current_tasks.active.open.by_priority(params[:priority]).recent
+    @completed_tasks = current_tasks.active.completed.by_priority(params[:priority]).recent
     @current_priority = params[:priority]
   end
   
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = Task.new(task_params)
+    @task = current_tasks.new(task_params)
     
     if @task.save
       redirect_to tasks_path, notice: 'Task created successfully.'
@@ -55,8 +55,14 @@ class TasksController < ApplicationController
   
   private
   
+  def current_tasks
+    Task.for_visitor(current_visitor_id)
+  end
+  
   def set_task
-    @task = Task.find(params[:id])
+    @task = current_tasks.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to tasks_path, alert: 'Task not found.'
   end
   
   def task_params

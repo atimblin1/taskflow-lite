@@ -6,9 +6,11 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
   validates :status, presence: true, inclusion: { in: %w[open completed] }
   validates :priority, presence: true
+  validates :visitor_id, presence: true
   validate :check_profanity
   
   # Scopes
+  scope :for_visitor, ->(visitor_id) { where(visitor_id: visitor_id) }
   scope :open, -> { where(status: 'open') }
   scope :completed, -> { where(status: 'completed') }
   scope :recent, -> { order(created_at: :desc) }
